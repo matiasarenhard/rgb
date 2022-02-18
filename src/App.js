@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import ColorBox from "./components/ColorBox";
+
 
 function App() {
   const [red, setRed] = useState(0);
@@ -8,6 +10,8 @@ function App() {
 
   return (
     <>
+      <ColorBox backgroundColor={`rgb(${red}, ${green}, ${blue})`}/>
+      
       <h3>red: {red}</h3>
       <input
         type="range"
