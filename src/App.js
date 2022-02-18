@@ -8,6 +8,8 @@ function App() {
   const [green, setGreen] = useState(0);
   const [blue, setBlue] = useState(0);
 
+  const [history, setHistory] = useState([]);
+
   return (
     <>
       <ColorBox backgroundColor={`rgb(${red}, ${green}, ${blue})`}/>
@@ -35,8 +37,13 @@ function App() {
         max={255}
         value={blue}
         onChange={({ target }) => setBlue(parseInt(target.value))} />
+      
+      <br />
+      <br />
+      <button onClick={() => setHistory((h) => [[red, green, blue], ...h])}>Adicionar cor ao histórico</button>
     </>
   );
 }
+
 
 export default App;
