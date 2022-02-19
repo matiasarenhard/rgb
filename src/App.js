@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import ColorBox from "./components/ColorBox";
+import History from "./components/History";
 
 
 function App() {
@@ -10,9 +11,11 @@ function App() {
 
   const [history, setHistory] = useState([]);
 
+  const backgroundColor = (r, g, b) => `rgb(${r}, ${g}, ${b})`;
+
   return (
     <>
-      <ColorBox backgroundColor={`rgb(${red}, ${green}, ${blue})`}/>
+      <ColorBox backgroundColor={backgroundColor(red, green, blue)}/>
       
       <h3>red: {red}</h3>
       <input
@@ -41,6 +44,10 @@ function App() {
       <br />
       <br />
       <button onClick={() => setHistory((h) => [[red, green, blue], ...h])}>Adicionar cor ao histórico</button>
+
+      <hr />
+
+      <History data={history} backgroundColor={backgroundColor}/>
     </>
   );
 }
