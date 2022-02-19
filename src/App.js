@@ -12,6 +12,12 @@ function App() {
   const [history, setHistory] = useState([]);
 
   const backgroundColor = (r, g, b) => `rgb(${r}, ${g}, ${b})`;
+  const isColorHistory = history.some(
+    (rgb) => JSON.stringify(rgb) === JSON.stringify([red, green, blue])
+
+
+
+  );
 
   return (
     <>
@@ -43,7 +49,9 @@ function App() {
       
       <br />
       <br />
-      <button onClick={() => setHistory((h) => [[red, green, blue], ...h])}>Adicionar cor ao histórico</button>
+      <button onClick={() => setHistory((h) => [[red, green, blue], ...h])}
+      disabled={isColorHistory}
+      >Adicionar cor ao histórico</button>
 
       <hr />
 
