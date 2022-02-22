@@ -14,10 +14,18 @@ function App() {
   const backgroundColor = (r, g, b) => `rgb(${r}, ${g}, ${b})`;
   const isColorHistory = history.some(
     (rgb) => JSON.stringify(rgb) === JSON.stringify([red, green, blue])
-
-
-
   );
+
+  const generateRandomColor = () => { 
+    const newRed = (Math.floor(Math.random() * 256));
+    const newGreen = (Math.floor(Math.random() * 256));
+    const newBlue = (Math.floor(Math.random() * 256));
+
+    setRed(newRed);
+    setGreen(newGreen);
+    setBlue(newBlue);
+    setHistory((h) => [[newRed, newGreen, newBlue], ...h])
+  };
 
   return (
     <>
@@ -55,7 +63,10 @@ function App() {
 
       <hr />
 
-      <History data={history} backgroundColor={backgroundColor}/>
+      <History data={history} backgroundColor={backgroundColor} />
+      <br />
+      <br />
+      <button onClick={generateRandomColor}>Gerar cor aleatória</button>
     </>
   );
 }
